@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<math.h>
 
-//function prototype
+//function prototypegit config --global user.name "Your Name"
 int is_Armstrong(int n);
 
 //main function
