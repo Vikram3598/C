@@ -29,7 +29,7 @@ int main()
      
         if(arr[mid]==n)
         {
-          cout<<"\nELEMENT "<<n<<" FOUND AT LOCATION "<<mid <<"."<<"l\n";
+          cout<<"\nELEMENT "<<n<<" FOUND AT LOCATION "<<mid <<". "<<"\n";
           exit(0);
         }
      
