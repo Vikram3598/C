@@ -44,13 +44,6 @@ void Quick_sort(int A[],int s,int l)        //Quick_sort() FUNCTION
     Quick_sort(A,T+1,l);
     }
 
-
-    /*cout<<"\n CONQUER           :\t";
-    for(int k=0;k<=l;k++)
-    {
-        cout<<A[k]<<"\t";
-    }*/
-
 }
 
 
