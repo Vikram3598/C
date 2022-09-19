@@ -27,9 +27,9 @@ int main()
     {
         int mid=(l+h)/2;
      
-        if(arr[mid]==n)
+        if(arr[mid]==n)./I
         {
-          cout<<"\nELEMENT "<<n<<" FOUND AT LOCATION "<<mid <<". "<<".  \n";
+          cout<<"\nELEMENT "<<n<<" FOUND AT LOCATION "<<mid <<". "<<"\n";
           exit(0);
         }
      
