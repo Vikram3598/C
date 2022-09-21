@@ -1,15 +1,16 @@
-#include <stdio.h>
+#include <stdlib.h>                         // HEADER FILE FOR rand() function
 #include <iostream>
+#include<chrono>                            // HEADER FILE FOR chrono() function which calculate execution time
 using namespace std;
 
-void swap(int *a,int *b)                 //swap() FUNCTION
+void swap(int *a,int *b)                                        //swap() FUNCTION
  {
      int temp = *a;
      *a = *b;
      *b = temp;
  }
 
-int partition(int A[],int s,int l)        //partition() FUNCTION DEFINITION
+int partition(int A[],int s,int l)                              //partition() FUNCTION DEFINITION
 {
     int i,j,pivot,temp;
 
@@ -35,7 +36,7 @@ int partition(int A[],int s,int l)        //partition() FUNCTION DEFINITION
 
 
 
-void Quick_sort(int A[],int s,int l)        //Quick_sort() FUNCTION
+void Quick_sort(int A[],int s,int l)                             //Quick_sort() FUNCTION
 {
     if(s<l)
     {
@@ -47,29 +48,51 @@ void Quick_sort(int A[],int s,int l)        //Quick_sort() FUNCTION
 }
 
 
-int main()                          //main() START
+void GenerateArray(int *A,int size)                             //GenerateArray() function
 {
-    int i,j;                        //variables
+    for(int i=0;i<size;i++)
+       A[i] = rand();
+    
+    /*{   
+        cout<<"A["<<i<<"] = ";
+        cin>>A[i];
+    }*/
+}
+
+
+void PrintArray(int *A,int s)                                     //PrintArray() function
+{
+    for(int i=0;i<s;i++)
+     {
+         cout<<A[i]<<"\t";
+     }    
+}
+
+
+int main()                                                          //main() START
+{
+    int i,j;                                                        //variables
     int k,n,s=0;
     
     cout<<"ENTER ARRAY SIZE : ";
     cin>>n;
     int A[n];
     
-    cout<<"\nENTER ARRAY :  \n";
-    for(int k=0;k<n;k++)
-    {   
-        cout<<"A["<<k<<"] = ";
-        cin>>A[k];
-    }
+    GenerateArray(A,n);                                             //CALLING GenerateArray() 
     
-    Quick_sort(A,0,n-1);            //CALLING Quick_sort() FUNCTION
+    cout<<"\nARRAY BEFORE SORTING :  ";
+    PrintArray(A,n);                                                //CALLING PrintArray()
+    
+    
+    auto start = std::chrono::high_resolution_clock::now();         //CLOCK START
+    Quick_sort(A,0,n-1);                                            //CALLING Quick_sort() FUNCTION
+    auto stop = std::chrono::high_resolution_clock::now();          //CLOCK END
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop-start);
+    
+    
+    cout<<"\nARRAY AFTER SORTING :\t";
+    PrintArray(A,n);                                                //CALLING PrintArray()
 
-    cout<<"\nSORTED  ARRAY IS  :\t";
-    for(k=0;k<n;k++)
-    {
-        cout<<"A["<<k<<"] = "<<A[k]<<"\t";
-    }
-
+    cout<<"\n\nTIME TAKEN BY Quick_sort() FUNCTION : " << duration.count()<<" microseconds\n";
 return 0;
-}                                   //END OF main()
+}                                                                   //END OF main()
