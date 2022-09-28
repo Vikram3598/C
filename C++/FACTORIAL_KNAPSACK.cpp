@@ -1,11 +1,11 @@
-#include <iostream>
+#include <iostream>                                 //HEADER FILE
 
 using namespace std;
 
-struct values
-{
+struct values                                       //STRUCTURE DEFINITION
+{       
     float profit;
-    float weight;
+    float weight;                       
     float profit_per_kg;
 };
 
@@ -16,10 +16,10 @@ struct values
     float temp[3];
     //struct values v;
     
-    for(i=0;i<8;i++)
+    for(i=0;i<n;i++)
     {
        //max=A[i];
-        for(j=i+1;j<8;j++)
+        for(j=i+1;j<n;j++)
         {
             if(A[j]->profit_per_kg > A[i]->profit_per_kg)
             {
@@ -45,16 +45,16 @@ struct values
 }*/
 
 
-int main()
+int main()                                  //main() STARTS
 {
     int n,i,j;
     float sum=0,temp[3],knapsack=0,cap=0;
     cout<<"ENTER NUMBER OF DATA VALUES : ";
     cin>>n;
     
-    struct values v[n];
+    struct values v[n];                     //ARRAY OF SRTUCTURE
     
-    for(i=0;i<n;i++)
+    for(i=0;i<n;i++)                        //INPUT OF VALUES
     {
         cout<<"PRODUCT ===> "<<i+1<<"\n";
         cout<<"PROFIT         :\t";
@@ -68,21 +68,11 @@ int main()
     }
     
     
-    /*cout<<"  TOTAL PROFIT\t"<<"    TOTAL WEIGHT(KG)\t"<<"   PROFIT/WEIGHT\n";
-    for(i=0;i<n;i++)
-    {
-        cout<<"\t"<<v[i].profit<<"\t\t"<<v[i].weight<<"\t\t\t"<<v[i].profit_per_kg<<"\n";
-    }*/
-
-
-    cout<<"\n ENTER THE CAPACITY OF BAG (FOR MAXIMUM PROFIT) <= "<<sum<<" :\t";
-    cin>>cap;
     
-
     
-    for(i=0;i<8;i++)                            //operation for sorting the array
+    for(i=0;i<n;i++)                            //operation for sorting the array
     {
-        for(j=i+1;j<8;j++)
+        for(j=i+1;j<n;j++)
         {
             if(v[j].profit_per_kg > v[i].profit_per_kg)
             {
@@ -101,23 +91,23 @@ int main()
                 v[j].profit_per_kg = temp[2];
             }
         }
-    }   
+    }  
     
 
     
-    cout<<"\n"<<"  TOTAL PROFIT\t"<<"    TOTAL WEIGHT(KG)\t"<<"   PROFIT/WEIGHT\n";
+    cout<<"\n\n"<<"  TOTAL PROFIT\t"<<"    TOTAL WEIGHT(KG)\t"<<"   PROFIT/WEIGHT\n";         //PRINT VALUES IN SORTED FORM
     for(i=0;i<n;i++)
     {
         cout<<"\t"<<v[i].profit<<"\t\t"<<v[i].weight<<"\t\t\t"<<v[i].profit_per_kg<<"\n";
     }    
     
     
-    cout<<"\n ENTER THE CAPACITY OF BAG (FOR MAXIMUM PROFIT) <= "<<sum<<" :\t";
+    cout<<"\n\nENTER THE CAPACITY OF BAG (FOR MAXIMUM PROFIT) <= "<<sum<<" :\t";
     cin>>cap;    
 
     
     int k=0;
-    while(cap!=0)
+    while(cap!=0)                                           //OPERATION TO FIND MAXIMUM PROFIT
     {
         if(v[k].weight<=cap)
         {
@@ -133,8 +123,8 @@ int main()
         }
     }
     
-    cout<<"\n\nKNAPSACK :\t"<<knapsack;
+    cout<<"\n\nMAXIMUM PROFIT :\t"<<knapsack<<"\n";
     
     
     return 0;
-}
+}                                                           //END OF main()
