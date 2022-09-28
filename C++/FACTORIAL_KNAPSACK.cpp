@@ -51,7 +51,7 @@ int main()                                  //main() STARTS
     float sum=0,temp[3],knapsack=0,cap=0;
     cout<<"ENTER NUMBER OF DATA VALUES : ";
     cin>>n;
-    
+    cout<<"\n\n";
     struct values v[n];                     //ARRAY OF SRTUCTURE
     
     for(i=0;i<n;i++)                        //INPUT OF VALUES
@@ -102,7 +102,7 @@ int main()                                  //main() STARTS
     }    
     
     
-    cout<<"\n\nENTER THE CAPACITY OF BAG (FOR MAXIMUM PROFIT) <= "<<sum<<" :\t";
+    cout<<"\n\nENTER THE CAPACITY OF BAG ( <= "<<sum<<" ) :\t";
     cin>>cap;    
 
     
@@ -123,7 +123,7 @@ int main()                                  //main() STARTS
         }
     }
     
-    cout<<"\n\nMAXIMUM PROFIT :\t"<<knapsack<<"\n";
+    cout<<"MAXIMUM PROFIT :\t"<<knapsack<<"\n";
     
     
     return 0;
