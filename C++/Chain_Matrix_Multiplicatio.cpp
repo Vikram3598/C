@@ -1,59 +1,76 @@
 #include <iostream>
+#include <limits.h>
+#include<map>
 
 using namespace std;
 
+int MatrixChainOrder(int p[], int n);
+void showOptimalSol(int n);
+int sol[10][10];
+
 int main()
 {
-    int n,i,j,k,d;
-    cout<<"\n ENTER NUMBER OF MATRIX TO MULTIPLY : ";
-    cin>>n;
-    
-    int D[n+1],min,q=0,Cost_Matrix[n][n]={0},Parenthesis_Matrix[n][n]={0};
+    int n, i;
+    cout << "Enter number of matrices\n";
+    cin >> n;
 
-    for(int i=0;i<n+1;i++)
-    {
-        cin>>D[i];
-    }
-    
-    
-    for(i=0;i<n;i++)
-    {
-        Cost_Matrix[i][i]=0;  
-        Parenthesis_Matrix[i][j]=0;
-    }
-    
+    n++;
 
-    for(d=1;d<n;d++)
+    int arr[n];
+
+    cout << "Enter dimensions \n";
+
+    for (i = 0; i < n; i++)
     {
-        for(i=0;i<n-d;i++)
-        {
-            j=i+d;
-            min=99999;   
-            for(k=i;k<j;j++)
-            {
-                q=Cost_Matrix[i][k]+Cost_Matrix[k+1][j]+(D[i]*D[k+1]*D[j+1]);
-                
-                if(q<min)
-                {
-                    min=q;
-                    Parenthesis_Matrix[i][j]=k;
-                }
-            }
-            Cost_Matrix[i][j]=min;
-        }
+        cout << "Enter d" << i << " :: ";
+        cin >> arr[i];
     }
-    
-    
-    
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-        cout<<Cost_Matrix[i][j]<<"\t";
-        }
-        cout<<"\n";        
-    }
-    
+
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Minimum number of multiplications is " << MatrixChainOrder(arr, size) << endl;
+    // for (i = 0; i < n; i++)
+    // {
+    //     for (int j = 0; j < n; j++)
+    //         cout << "s[" << i << "]"
+    //              << "[" << j<<"] :: "<<sol[i][j]<<"\n";
+    // }
 
     return 0;
 }
+
+int MatrixChainOrder(int p[], int n)
+{
+    int m[n][n];
+    int i, j, k, L, q;
+    for (i = 0; i < n; i++)
+        m[i][i] = 0;        // no. of mulitiplications are zero when there is only on matrix
+    for (L = 2; L < n; L++) // L is chain lnegth
+    {
+        for (i = 1; i < n - L + 1; i++)
+        {
+            j = i + L - 1;
+            m[i][j] = INT_MAX;
+            for (k = i; k <= j - 1; k++)
+            {
+                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                if (q < m[i][j])
+                {
+                    m[i][j] = q;
+                    sol[i][j] = k;
+                }
+            }
+        }
+    }
+    return m[1][n - 1];
+}
+
+// void showOptimalSol(int n)
+// {
+//     map<int,int> marix;
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         (so)
+//     }
+// }
