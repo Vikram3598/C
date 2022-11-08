@@ -1,14 +1,16 @@
 #include <iostream>
-//#include <conio.h>
+
 using namespace std;
-void floyds(int b[][7])
+
+
+void floyds(int n,int b[][10])
 {
     int i, j, k;
-    for (k = 0; k < 7; k++)
+    for (k = 0; k < n; k++)
     {
-        for (i = 0; i < 7; i++)
+        for (i = 0; i < n; i++)
         {
-            for (j = 0; j < 7; j++)
+            for (j = 0; j < n; j++)
             {
                 if ((b[i][k] * b[k][j] != 0) && (i != j))
                 {
@@ -20,10 +22,10 @@ void floyds(int b[][7])
             }
         }
     }
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < n; i++)
     {
         cout<<"\nMinimum Cost With Respect to Node:"<<i<<endl;
-        for (j = 0; j < 7; j++)
+        for (j = 0; j < n; j++)
         {
             cout<<b[i][j]<<"\t";
         }
@@ -32,16 +34,18 @@ void floyds(int b[][7])
 }
 int main()
 {
-    int b[7][7];
+	int n;
+	cout<<"ENTER NUMBER OF NODES :\t";
+	cin>>n;
+	int  b[n][10];
     cout<<"ENTER VALUES OF ADJACENCY MATRIX\n\n";
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout<<"enter values for "<<(i+1)<<" row"<<endl;
-        for (int j = 0; j < 7; j++)
+        for (int j = 0; j < n; j++)
         {
             cin>>b[i][j];
         }
+		cout<<"\n\n";
     }
-    floyds(b);
- //   getch();
+    floyds(n,b);
 }
